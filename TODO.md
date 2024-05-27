@@ -1,0 +1,2 @@
+- [x] solve naively
+- [ ] solve sophisticated using styled components inheritance
