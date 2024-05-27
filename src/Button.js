@@ -45,6 +45,12 @@ const fontColors = {
   [Variants.Ghost]: COLORS.gray,
 };
 
+const hoverBackgroundColors = {
+  [Variants.Fill]: COLORS.primaryLight,
+  [Variants.Outline]: COLORS.offwhite,
+  [Variants.Ghost]: COLORS.transparentGray15,
+};
+
 const Button = ({ variant, size, children }) => {
   /* dimensions */
   let paddingSize = paddingSizes[size];
@@ -54,6 +60,7 @@ const Button = ({ variant, size, children }) => {
   /* colors */
   const backgroundColor = backgroundColors[variant];
   const fontColor = fontColors[variant];
+  const hoverBackgroundColor = hoverBackgroundColors[variant];
 
   /* border */
   let border = "none";
@@ -88,6 +95,7 @@ const Button = ({ variant, size, children }) => {
         "--font-color": fontColor,
         "--border": border,
         "--outline-color": outlineColor,
+        "--hover-background-color": hoverBackgroundColor,
       }}
     >
       {children}
@@ -118,6 +126,11 @@ const StyledButton = styled.button`
   &:focus {
     outline: 2px solid var(--outline-color);
     outline-offset: 2px;
+  }
+
+  &:hover {
+    color: ${(p) => (p.variant === Variants.Ghost ? COLORS.black : false)};
+    background-color: var(--hover-background-color);
   }
 `;
 
